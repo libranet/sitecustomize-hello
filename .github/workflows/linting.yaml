@@ -64,7 +64,10 @@ jobs:
               run: |
                   make pyroma
 
-            - name: Check poetry
+            - name: Poetry check
               run: |
                   make poetry-check
+
+            - name: Poetry check lock
+              run: |
                   make poetry-check-lock
