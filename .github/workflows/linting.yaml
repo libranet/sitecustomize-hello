@@ -67,4 +67,4 @@ jobs:
             - name: Check poetry
               run: |
                   make poetry-check
-                  make poetry-lock-check
+                  make poetry-check-lock

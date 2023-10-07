@@ -35,9 +35,9 @@ poetry-check:
 	poetry check
 
 
-.PHONY: poetry-lock-check ## run poetry lock --check on python-package
+.PHONY: poetry-check-lock ## run poetry check --lock on python-package
 poetry-lock-check:
-	poetry lock --check
+	poetry check --lock
 
 
 .PHONY: poetry-env-info ## run env info
