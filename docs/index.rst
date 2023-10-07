@@ -1,4 +1,4 @@
-sitecustomize_hello
+sitecustomize-hello
 ===================
 
 .. toctree::
