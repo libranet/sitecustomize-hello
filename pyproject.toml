@@ -281,7 +281,7 @@ commands =
 [tool.ruff]
 # https://beta.ruff.rs/docs/configuration/
 # https://github.com/pandas-dev/pandas/blob/main/pyproject.toml
-cache-dir = "var/cache/ruff"
+# cache-dir = "var/cache/ruff"  # relative to $PWD
 ignore = [
     "B011", # B011 Do not call assert False since python -O removes these calls.
 ]

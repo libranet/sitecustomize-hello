@@ -14,7 +14,7 @@ https://app.codecov.io/gh/libranet/sitecustomize-hello
 
 ## How does it work?
 
-We register the ``sitecustomize_hellp.entrypoint()``-function to the ``sitecustomize``-module that is installed by the
+We register the ``sitecustomize_help.entrypoint()``-function to the ``sitecustomize``-module that is installed by the
 [sitecustomize-entrypoints](http://pypi.python.org/pypi/sitecustomize-entrypoints)-package.
 
 The registered function will print "Hello" to the standard output.
