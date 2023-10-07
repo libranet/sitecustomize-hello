@@ -50,16 +50,12 @@ Usage:
 
 """
 import importlib
-import pathlib as pl
+import io
 import sys
 
 import pytest
+
 import sitecustomize_hello
 
 # reload the module to fix coverage report
 importlib.reload(sitecustomize_hello)
-
-
-@pytest.fixture
-def bin_dir() -> pl.Path:
-    return pl.Path(sys.prefix) / "bin"

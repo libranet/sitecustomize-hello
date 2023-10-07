@@ -2,28 +2,17 @@
 # pylint: disable=import-outside-toplevel
 # pylint: disable=missing-function-docstring
 """Testing of module sitecustomize_hello."""
-import contextlib
-import os
 
 
-@contextlib.contextmanager
-def change_working_directory(directory):
-    current_directory = os.getcwd()
-    try:
-        os.chdir(directory)
-        yield
-    finally:
-        os.chdir(current_directory)
+def test_entrypoint(capsys) -> None:
+    import sitecustomize_hello
 
+    # Call the entrypoint function
+    sitecustomize_hello.entrypoint()
 
-def test_sitecustomize_hello() -> None:
-    assert os.getcwd() == os.getenv("PWD_DIR")
+    # Capture the standard output
+    captured = capsys.readouterr()
 
+    # Check if the captured output matches the expected message
+    assert captured.out.strip() == "Hello!"
 
-def test_sitecustomize_hello(tmpdir) -> None:
-    assert os.getcwd() == os.getenv("PWD_DIR")
-
-    with change_working_directory(tmpdir):
-        assert str(tmpdir) != os.getenv("PWD_DIR")
-
-    assert os.getcwd() == os.getenv("PWD_DIR")
