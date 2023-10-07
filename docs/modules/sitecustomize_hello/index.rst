@@ -1,5 +1,5 @@
 :py:mod:`sitecustomize_hello`
-=====================
+=============================
 
 .. py:module:: sitecustomize_hello
 
@@ -19,7 +19,6 @@ Functions
 .. autoapisummary::
 
    sitecustomize_hello.entrypoint
-   sitecustomize_hello.get_cwd
 
 
 
@@ -36,25 +35,20 @@ Attributes
 .. py:data:: __version__
    :value: '1.0'
 
-
+   
 
 .. py:data:: __copyright__
    :value: 'Copyright 2023 Libranet.'
 
-
+   
 
 .. py:data:: __license__
    :value: 'MIT License'
 
-
+   
 
 .. py:function:: entrypoint()
 
-   Set $PWD ans environment-variable.
-
-
-.. py:function:: get_cwd()
-
-   Return the current working directory.
+   Print hello to standard output.
 
 
