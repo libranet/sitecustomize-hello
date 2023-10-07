@@ -1,8 +1,6 @@
 # See ../makefile
 
-GIT_CLONE_URL := $(shell git remote get-url --push origin)
-LATEST_TAG := $(shell git fetch --tags && git describe --tags --abbrev=0)
-CLONE_DIR := 'var/cache/tags/${LATEST_TAG}'
+
 
 .PHONY: git-init  ## initialize  new git-repo
 git-init:
@@ -45,6 +43,9 @@ git-show-url:
 .PHONY: git-tmp-clone  ## clone repo to tmp-dir
 git-tmp-clone:
 # LATEST_TAG=$(git describe --tags --abbrev=0)
+	GIT_CLONE_URL := $(shell git remote get-url --push origin)
+	LATEST_TAG := $(shell git fetch --tags && git describe --tags --abbrev=0)
+	CLONE_DIR := 'var/cache/tags/${LATEST_TAG}'
 	$(eval LATEST_TAG := $(git describe --tags --abbrev=0)) \
 	cd ${CLONE_DIR}-${LATEST_TAG} && \
 	@ git clone ${GIT_CLONE_URL} ${CLONE_DIR}
@@ -52,6 +53,8 @@ git-tmp-clone:
 
 .PHONY: git-latest-tag  ## show latest tag
 git-latest-tag:
+	LATEST_TAG := $(shell git fetch --tags && git describe --tags --abbrev=0)
+
 	$(eval LATEST_TAG := $(git describe --tags --abbrev=0)) \
 	@ echo -e "Latest tag: ${LATEST_TAG}"
 	export LATEST_TAG
@@ -59,6 +62,10 @@ git-latest-tag:
 
 .PHONY: publish-to-pypi  ## publish-to-pypi
 publish-to-pypi:
+	GIT_CLONE_URL := $(shell git remote get-url --push origin)
+	LATEST_TAG := $(shell git fetch --tags && git describe --tags --abbrev=0)
+	CLONE_DIR := 'var/cache/tags/${LATEST_TAG}'
+
 	@ echo -e "Creating directory ${CLONE_DIR}" && \
 	mkdir -p ${CLONE_DIR} && \
 	git clone ${GIT_CLONE_URL} ${CLONE_DIR}

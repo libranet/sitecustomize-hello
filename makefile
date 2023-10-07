@@ -25,7 +25,7 @@
 install: create-dirs dotenv-install poetry-install symlink-venv-dirs
 
 
-# .PHONY: publish-pypi  ## full initial installation
+# .PHONY: publish-pypi  ## publish to pypi
 # publish-pypi:
 # 	git fetch --tags
 # 	git co x.y

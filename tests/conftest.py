@@ -50,10 +50,6 @@ Usage:
 
 """
 import importlib
-import io
-import sys
-
-import pytest
 
 import sitecustomize_hello
 

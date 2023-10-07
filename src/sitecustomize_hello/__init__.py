@@ -5,6 +5,25 @@ __license__ = "MIT License"
 import os
 
 
+def strtobool(val):
+    """Convert a string representation of truth to true (1) or false (0).
+
+    True values are case insensitive 'y', 'yes', 't', 'true', 'on', and '1'.
+    false values are case insensitive 'n', 'no', 'f', 'false', 'off', and '0'.
+    Raises ValueError if 'val' is anything else.
+
+    Copied from distutils.util.strtobool, which is deprecated
+
+    """
+    val = val.lower()
+    if val in ("y", "yes", "t", "true", "on", "1"):
+        return 1
+    elif val in ("n", "no", "f", "false", "off", "0"):
+        return 0
+    else:
+        raise ValueError("invalid truth value %r" % (val,))
+
+
 def entrypoint() -> None:
     """Print hello to standard output.
 
@@ -15,11 +34,9 @@ def entrypoint() -> None:
 
     """
     try:
-        enabled = int(os.getenv("SITECUSTOMIZE_HELLO_ENABLE", 1))
+        enabled = strtobool(os.getenv("SITECUSTOMIZE_HELLO_ENABLE", 1))
     except ValueError:
         enabled = 0
 
-    # print(f"ena: {enabled}")
-
-    if bool(enabled):
+    if enabled:
         print("Hello!")
