@@ -5,7 +5,7 @@ __license__ = "MIT License"
 import os
 
 
-def strtobool(val: str) -> bool:
+def strtobool(value: str) -> bool:
     """Convert a string representation of truth to true (1) or false (0).
 
     True values are case insensitive 'y', 'yes', 't', 'true', 'on', and '1'.
@@ -15,13 +15,14 @@ def strtobool(val: str) -> bool:
     Copied from distutils.util.strtobool, which is deprecated
 
     """
-    val = val.lower()
-    if val in ("y", "yes", "t", "true", "on", "1"):
+    value = value.lower()
+    if value in ("y", "yes", "t", "true", "on", "1"):
         return True
-    elif val in ("n", "no", "f", "false", "off", "0"):
+
+    if value in ("n", "no", "f", "false", "off", "0"):
         return False
-    else:
-        raise ValueError("invalid truth value %r" % (val,))
+
+    raise ValueError(f"invalid truth value '{value}'")
 
 
 def entrypoint() -> None:
