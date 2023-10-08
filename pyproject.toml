@@ -32,7 +32,7 @@ skips = [
 targets = ["docs", "src", "tests"]
 
 [tool.bandit.assert_used]
-skips = ["*/test_*.py"]
+skips = ["*/test_*.py", "*/*_test.py"]
 
 
 [tool.black]
